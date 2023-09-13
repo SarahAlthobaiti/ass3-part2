@@ -1,5 +1,41 @@
 //Student Name: Sarah Mohamed Althobiti , Student ID: 444004881
 public class SinglyLinkedList<E>{
+    private static class Node<E>{
+
+        private E data;
+        private Node next;
+      
+        public Node(){
+           data = null;
+           next = null;
+        }
+        public Node(E data){
+          this.data = data;
+          this.next = null;
+           
+        }
+        public Node(E data, Node next){
+          this.data = data;
+          this.next = next;
+        }
+      
+        public void setData(E data){
+          this.data = data;
+        }
+        public void setNext(Node next){
+          this.next = next;
+        }
+        public E getData(){
+          return data;
+        }
+        public Node getNext(){
+          return next;
+        }
+      
+     
+    }
+
+
     private Node head;
     private Node tail;
     private int size;
@@ -13,11 +49,11 @@ public class SinglyLinkedList<E>{
     public int getSize(){
         return size;
     }
-    public Node getFirst(){
-        return head;
+    public E getFirst(){
+        return (E)head.getData();
     }
-    public Node getLast(){
-        return tail;
+    public E getLast(){
+        return (E)tail.getData();
     }
      boolean isEmpty(){
         return size == 0;
@@ -84,12 +120,14 @@ public class SinglyLinkedList<E>{
         }
 
     }
-    public void removeFirst(){
+    public E removeFirst(){
         if(isEmpty()){
-            return;
+            return null;
         }
+        E answer = (E)head.getData();
         head = head.getNext();
         size--;
+        return answer;
     }
     public void removeLast(){
         if(isEmpty()){
